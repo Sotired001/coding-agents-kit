@@ -1,0 +1,17 @@
+{
+  // For adopters who typecheck the kit with their own TypeScript compiler. The kit itself runs on Node's type
+  // stripping and needs no compiler; this file was not run when the kit was assembled (no compiler offline).
+  "compilerOptions": {
+    "target": "es2024",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "erasableSyntaxOnly": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,25 @@
+{
+  "remote": "origin",
+  "mainBranch": "main",
+  "worktrees": {
+    "dir": ".worktrees",
+    "branchPrefix": "agent/",
+    "copy": ["node_modules"],
+    "copyNewest": [{ "path": "target", "marker": "debug/deps", "skip": ["incremental"] }],
+    "graceHours": 2
+  },
+  "checks": {
+    "budget": "auto",
+    "timeoutMinutes": 60,
+    "commands": [
+      { "label": "rust", "run": "cargo clippy --all-targets -- -D warnings && cargo test", "weight": 2 },
+      { "label": "typecheck", "run": "npm run typecheck", "weight": 2 },
+      { "label": "no-shortcuts", "run": "node --no-warnings=ExperimentalWarning tools/agents-kit/src/lints/no-shortcuts.ts" },
+      { "label": "no-skipped-tests", "run": "node tools/agents-kit/src/lints/no-skipped-tests.ts" }
+    ]
+  },
+  "status": {
+    "liveCommand": "curl --max-time 10 -fsS https://app.example.com/api/health",
+    "liveField": "build"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "coding-agents-kit",
+  "version": "0.1.0",
+  "description": "Worktrees, a check gate, work status and a deploy queue for running several AI coding agents on one repository.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --no-warnings=ExperimentalWarning --test --test-concurrency=1 \"src/**/*.test.ts\"",
+    "lint": "node --no-warnings=ExperimentalWarning src/lints/no-shortcuts.ts && node src/lints/no-skipped-tests.ts",
+    "wt": "node src/worktree.ts",
+    "check": "node src/check.ts",
+    "work:status": "node src/work-status.ts",
+    "deploy:queue": "node src/deploy-queue.ts"
+  }
+}

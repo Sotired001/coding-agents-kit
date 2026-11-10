@@ -1,0 +1,12 @@
+{
+  "root": "/srv/example-app",
+  "repo": "/srv/example-app/repo.git",
+  "branch": "main",
+  "build": "npm ci --offline && npm run build",
+  "activate": "systemctl --user restart example-app",
+  "health": "curl --max-time 5 -fsS http://localhost:8080/health",
+  "healthTimeoutSeconds": 90,
+  "lockWaitSeconds": 3600,
+  "keepReleases": 5,
+  "onFailure": "echo \"$DEPLOY_FAILURE\" >> /srv/example-app/deploy-failures.log"
+}
